@@ -4,7 +4,7 @@
           "name": "Launch Electron",
           "type": "node",
           "request": "launch",
-          "program": "${workspaceRoot}/src/index.js",
+          "program": "${workspaceRoot}/sections/index.js",
           "stopOnEntry": false,
           "args": [],
           "cwd": "${workspaceRoot}",
