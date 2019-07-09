@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset="utf-8">
     <title>我的魔镜</title>
-  </head>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/div.css" />
 
-  <body style="background-color: black">
-    <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=83" allowtransparency="true" width="515" height="178" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</head>
 
-  </body>
+<body id="drag-file">
+    <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=83" allowtransparency="true" width="515" height="178" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
+
+    <div id="weatherdiv"></div>
+    <div id="clockdiv"></div>
+
+    <script>
+        require("../renderer-process/render")
+    </script>
+</body>
 
 </html>

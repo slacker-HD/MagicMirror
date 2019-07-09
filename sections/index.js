@@ -18,7 +18,7 @@ const createWindow = () => {
     mainWindow.setMenu(null);
     mainWindow.loadURL(`file://${__dirname}/index.html`);
     mainWindow.webContents.openDevTools();
-    mainWindow.setFullScreen(true);
+    // mainWindow.setFullScreen(true);
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
