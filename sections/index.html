@@ -4,14 +4,49 @@
     <head>
         <meta charset="utf-8">
         <title>我的魔镜</title>
-        <link rel="stylesheet" href="../assets/css/style.css" />
         <link rel="stylesheet" href="../assets/css/div.css" />
+        <link rel="stylesheet" href="../assets/css/nativize.css" />
 
     </head>
 
     <body id="drag-file">
 
         <div id="weatherdiv">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td id="location" colspan="2">合肥</td>
+                            </tr>
+                            <tr>
+                                <td id="temperature" rowspan="2">28~21</td>
+                                <td class="smallsurfix">℃</td>
+                            </tr>
+                            <tr>
+                                <td class="smallsurfix">多云</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <div class="tq4"><img class="pngtqico" align="absmiddle"
+                                src="http://plugin.tianqistatic.com/static/images/tianqibig/b1.png"
+                                style="border:0;width:46px;height:46px" /></div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td id="myear" colspan="2">
+                        07/10 己亥年六月初八
+                    </td>
+                </tr>
+                <tr>
+                    <td id="mtime" colspan="2">
+                        23:29
+                    </td>
+                </tr>
+            </table>
+
             <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=83" allowtransparency="true"
                 width="515" height="178" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
             <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=2&num=5" allowtransparency="true"
@@ -26,9 +61,8 @@
 
             <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=112" width="110" height="150"
                 frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
-            <div class="tianqi">
+            <!-- <div class="tianqi">
                 <div class="tq1">
-                    <span class="sp1">今日天气</span>
                     <span class="sp2 f1">合肥</span>
                 </div>
 
@@ -44,12 +78,7 @@
                         src="http://plugin.tianqistatic.com/static/images/tianqibig/b1.png"
                         style="border:0;width:46px;height:46px" /></div>
 
-                <div class="pic"><img src="//www.tianqi.com/static/images/code/tq_xs_2.gif" /></div>
-                <div class="txt">
-                    <span class="sp1">穿衣指数</span>
-                    <span class="sp2 f1">热</span>
-                </div>
-            </div>
+            </div> -->
         </div>
         <div id="clockdiv"></div>
 

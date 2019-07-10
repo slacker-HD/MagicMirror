@@ -1,0 +1,114 @@
+/*
+** nativize.css
+** Makes the UI feel more native
+*/
+
+* {
+    box-sizing: border-box;
+    font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+}
+
+html {
+    height: 100%;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow: hidden;
+    /* Prevents rubber-band scrolling of the whole "page" */
+    color: var(--color);
+    background-color: #000000;
+    /* To cover OSes with no default background color */
+    -webkit-user-select: none;
+    /* disable selection */
+    -webkit-user-drag: none;
+    /* disable dragging */
+    cursor: default;
+    /* use default cursor */
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    padding: 0;
+    background-color: #000000;
+}
+
+/* enable text selection */
+
+.is-selectable,
+pre,
+code {
+    -webkit-user-select: auto;
+    cursor: auto;
+}
+
+
+/* Buttons and links */
+
+button {
+    cursor: default;
+}
+
+
+/* Internal links */
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px dashed;
+    outline: none;
+}
+
+
+/* New window (target) + external links */
+
+a[target],
+a[href^="https://"],
+a[href^="http://"] {
+    border-bottom: 1px solid;
+}
+
+a:hover,
+a:focus {
+    border-bottom: none;
+}
+
+
+/* Images */
+
+img {
+    -webkit-user-drag: none;
+    /* disable dragging */
+}
+
+
+/* 
+li {
+    list-style-type: square;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+li span {
+    color: black;
+    cursor: hand;
+    text-decoration: none;
+    border: 1px solid #F1F1F1;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.liOver {
+    background-color: #dddddd;
+    border: 1px solid #000000;
+}
+
+.liout {
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+}
+
+li span.lidown {
+    background-color: #00ff00;
+    border: 1px solid #999999;
+} */
