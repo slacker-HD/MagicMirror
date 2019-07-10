@@ -10,6 +10,12 @@
     "browser": true,
   },
   "rules": {
+    "prefer-destructuring": ["error", {
+      "array": false,
+      "object": true
+    }, {
+      "enforceForRenamedProperties": false
+    }],
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": [2, {
@@ -18,9 +24,9 @@
     "linebreak-style": 0,
     "strict": 0,
     "no-console": "off",
-    "max-len":"off",
-    "eol-last":"off",
-    "indent":"off",
-    "newline-per-chained-call":"off"
+    "max-len": "off",
+    "eol-last": "off",
+    "indent": "off",
+    "newline-per-chained-call": "off"
   }
 }

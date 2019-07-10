@@ -4,9 +4,11 @@ import {
     app,
     BrowserWindow,
     net,
+    ipcMain,
 } from 'electron';
 
-import weatherInfo from './weatherInfo';
+import WeatherInfo from './WeatherInfo';
+import PantengInfo from './PantengInfo';
 
 const os = require('os');
 // const Parser = require('rss-parser');
@@ -35,6 +37,7 @@ app.on('window-all-closed', () => {
         app.quit();
     }
 });
+
 
 app.on('activate', () => {
     if (mainWindow === null) {
@@ -68,7 +71,6 @@ if (!gotTheLock) {
 
 // })();
 
-
 function GetLocalWeatherinfo() {
     let tmp = '';
     try {
@@ -78,7 +80,8 @@ function GetLocalWeatherinfo() {
                 tmp += chunk;
             });
             response.on('end', () => {
-                mainWindow.webContents.send('getnews', weatherInfo.GetLocalWeatherinfo(tmp));
+                console.log(WeatherInfo.GetLocalweatherInfo(tmp));
+                mainWindow.webContents.send('askweatherinfo_r', WeatherInfo.GetLocalweatherInfo(tmp));
             });
         });
         request.end();
@@ -87,41 +90,44 @@ function GetLocalWeatherinfo() {
     }
 }
 
-function action() {
-    if (os.platform() === 'linux') {
-        try {
-            GetLocalWeatherinfo();
-            // hardWaredataHandle.GetO2Value();
-            // hardWaredataHandle.GetPantengValue();
-        } catch (error) {
-            console.log(error);
-        }
-        try {
-            console.log('');
-            // netdataHandle.UpLoadData();
-        } catch (err) {
-            console.log(err);
-        }
-        mainWindow.webContents.send('action', [global.data.O2Value.value(),
-            global.data.PMValue.value(),
-            global.data.HCHOValue.value(),
-            global.data.HumdityValue.value(),
-            global.data.TemperatureValue.value(),
-            global.data.CO2Value.value(),
-        ]);
+ipcMain.on('askweatherinfo', () => {
+    GetLocalWeatherinfo();
+});
+
+function GetPantengValue() {
+    try {
+        mainWindow.webContents.send('askdeviceinfo_r', PantengInfo.GetPantengInfo());
+    } catch (error) {
+        console.log(error);
     }
 }
+ipcMain.on('askdeviceinfo', () => {
+    if (os.platform() === 'linux') {
+        GetPantengValue();
+    }
+});
 
-setInterval(() => {
-    console.log('time inteval');
-    action();
-    // time++;
-    // if (time == 60) {
-    //     time = 0;
-    //     getweather();
-    //     getnews();
-    // }
-    // hardWaredataHandle.SetPMSwitch();
-    // hardWaredataHandle.SetHumditySwitch();
-    // hardWaredataHandle.SetO2Switch();
-}, 1000);
+// function action() {
+//     if (os.platform() === 'linux') {
+//         try {
+//             GetLocalWeatherinfo();
+//             // hardWaredataHandle.GetO2Value();
+//             // hardWaredataHandle.GetPantengValue();
+//         } catch (error) {
+//             console.log(error);
+//         }
+//         try {
+//             console.log('');
+//             // netdataHandle.UpLoadData();
+//         } catch (err) {
+//             console.log(err);
+//         }
+//         mainWindow.webContents.send('action', [global.data.O2Value.value(),
+//             global.data.PMValue.value(),
+//             global.data.HCHOValue.value(),
+//             global.data.HumdityValue.value(),
+//             global.data.TemperatureValue.value(),
+//             global.data.CO2Value.value(),
+//         ]);
+//     }
+// }
