@@ -7,6 +7,10 @@ import {
     fs,
 } from 'fs';
 
+import {
+    sscanf,
+} from 'scanf';
+
 export default class PantengInfo {
     static GetPantengInfo() {
         let pm25;
