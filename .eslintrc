@@ -20,6 +20,7 @@
     "no-console": "off",
     "max-len":"off",
     "eol-last":"off",
-    "indent":"off"
+    "indent":"off",
+    "newline-per-chained-call":"off"
   }
 }

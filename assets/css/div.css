@@ -1,11 +1,11 @@
 #weatherdiv {
     position: absolute;
-    top: 100px;
-    left: 200px;
-    width: 280px;
-    height: 100px;
-    margin: 5px;
-    background-color: blue
+    top: 5px;
+    left: 5px;
+    width: 110px;
+    height: 150px;
+    margin: 0px;
+    background-color: black
 }
 
 #clockdiv {
@@ -16,4 +16,182 @@
     height: 30px;
     margin: 5px;
     background-color: yellow
+}
+
+strong {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+em {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: 0;
+    text-align: top;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.crl {
+    clear: both;
+}
+
+.tianqi {
+    float: left;
+    width: 110px;
+    height: 150px;
+}
+
+.tianqi .tq1 {
+    width: 150px;
+    height: 24px;
+    position: relative;
+}
+
+.tianqi .tq1 .sp1 {
+    display: block;
+    width: 60px;
+    height: 24px;
+    float: left;
+    font-size: 14px;
+    line-height: 22px;
+    color: white
+}
+
+.tianqi .tq1 .sp2 {
+    display: block;
+    width: 72px;
+    height: 24px;
+    float: left;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+    color: white;
+    overflow: hidden;
+}
+
+.tianqi .tq2 {
+    width: 160px;
+    height: 30px;
+    position: relative;
+}
+
+.tianqi .tq2 .sp1 {
+    display: block;
+    height: 30px;
+    font-size: 22px;
+    float: left;
+    color: white;
+    line-height: 30px;
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+.tianqi .tq2 .tq2_1 {
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+
+.tianqi .tq2 .tq2_1 .sp2 {
+    width: 50px;
+    height: 14px;
+    float: left;
+    line-height: 14px;
+    font-size: 12px;
+    color: white;
+    margin-top: 0px;
+}
+
+.tianqi .tq2 .tq2_1 .sp3 {
+    width: 98px;
+    height: 14px;
+    float: left;
+    line-height: 14px;
+    font-size: 12px;
+    color: white;
+    overflow: hidden;
+}
+
+.tianqi .tq3 {
+    width: 230px;
+    height: 20px;
+    position: relative;
+    font-size: 12px;
+    color: white;
+    line-height: 20px;
+}
+
+.tianqi .tq4 {
+    float: left;
+    width: 46px;
+    height: 46px;
+    padding: 3px 36px 3px 28px;
+}
+
+.tianqi .pic {
+    width: 40px;
+    height: 40px;
+    float: left;
+    text-align: left;
+}
+
+.tianqi .pic img {
+    width: 35px;
+    height: 35px;
+    margin-top: 4px;
+}
+
+.tianqi .txt {
+    width: 70px;
+    height: 40px;
+    float: left;
+    margin-top: 0px;
+}
+
+.tianqi .txt .sp1 {
+    width: 70px;
+    height: 20px;
+    display: block;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: left;
+    color: white;
+}
+
+.tianqi .txt .sp2 {
+    width: 70px;
+    height: 20px;
+    display: block;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: left;
+    color: white;
 }

@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>我的魔镜</title>
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/div.css" />
+    <head>
+        <meta charset="utf-8">
+        <title>我的魔镜</title>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <link rel="stylesheet" href="../assets/css/div.css" />
 
-</head>
+    </head>
 
-<body id="drag-file">
-    <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=83" allowtransparency="true" width="515" height="178" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
+    <body id="drag-file">
 
-    <div id="weatherdiv"></div>
-    <div id="clockdiv"></div>
+        <div id="weatherdiv">
+            <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=83" allowtransparency="true"
+                width="515" height="178" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
+            <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=2&num=5" allowtransparency="true"
+                width="650" height="70" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=7" style="border:solid 1px #7ec8ea"
+                width="225" height="90" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
 
-    <script>
-        require("../renderer-process/render")
-    </script>
-</body>
+            <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=64" width="540" height="291"
+                frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
+            <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=55" style="border:solid 1px #000000"
+                width="255" height="294" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
+
+            <!-- <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=112" width="110" height="150"
+                frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> -->
+            <div class="tianqi">
+                <div class="tq1">
+                    <span class="sp1">今日天气</span>
+                    <span class="sp2 f1">合肥</span>
+                </div>
+
+                <div class="tq2">
+                    <span class="sp1 f1">28~21</span>
+                    <div class="tq2_1">
+                        <span class="sp2">℃</span>
+                        <span class="sp3">多云</span>
+                    </div>
+                </div>
+
+                <div class="tq4"><img class="pngtqico" align="absmiddle"
+                        src="http://plugin.tianqistatic.com/static/images/tianqibig/b1.png"
+                        style="border:0;width:46px;height:46px" /></div>
+
+                <div class="pic"><img src="//www.tianqi.com/static/images/code/tq_xs_2.gif" /></div>
+                <div class="txt">
+                    <span class="sp1">穿衣指数</span>
+                    <span class="sp2 f1">热</span>
+                </div>
+            </div>
+        </div>
+        <div id="clockdiv"></div>
+
+        <script>
+            require("../renderer-process/render")
+        </script>
+    </body>
 
 </html>

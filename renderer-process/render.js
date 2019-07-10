@@ -1,7 +1,10 @@
 'use strict';
 
-// 屏蔽drag&drop，防止文件拖到主界面出错
+const ipc = require('electron').ipcRenderer;
+// const shell = require('electron').shell;
 
+
+// 屏蔽drag&drop，防止文件拖到主界面出错
 function blockdrag() {
     const holder = document.getElementById('drag-file');
     holder.ondragover = () => false;
@@ -17,3 +20,11 @@ function blockdrag() {
 }
 
 blockdrag();
+
+ipc.on('action', (Content) => {
+    try {
+        console.log(Content);
+    } catch (error) {
+        console.log('读取传感器出错！');
+    }
+});

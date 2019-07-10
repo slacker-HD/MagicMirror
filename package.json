@@ -3,7 +3,7 @@
     "productName": "magicmirror",
     "version": "0.0.1",
     "description": "My Electron application for magicmirror",
-    "main": "sections/index.js",
+    "main": "main-process/main.js",
     "scripts": {
         "start": "electron-forge start",
         "package": "electron-forge package",
@@ -51,6 +51,7 @@
         }
     },
     "dependencies": {
+        "cheerio": "^1.0.0-rc.3",
         "electron-compile": "^6.4.4",
         "electron-squirrel-startup": "^1.0.0",
         "rss-parser": "^3.7.2"
