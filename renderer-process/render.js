@@ -8,7 +8,7 @@ const showDay = ['星期一', '星期二', '星期三', '星期四', '星期五'
 
 let askdeviceinfo = 30;
 let askweatherinfo = 1800;
-
+let showimginfo = 8;
 // 屏蔽drag&drop，防止文件拖到主界面出错
 function blockdrag() {
     const holder = document.getElementById('drag-file');
@@ -35,11 +35,26 @@ ipc.on('action', (Content) => {
 });
 
 setInterval(() => {
-    const now = new Date();
-    document.getElementById('mtime').innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-    document.getElementById('mdate').innerHTML = `${now.getFullYear()}年${now.getMonth()}月${now.getDate()}日  ${showDay[now.getDay()]}`;
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
+
+    document.getElementById('mtime').innerHTML = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('mdate').innerHTML = `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日  ${showDay[date.getDay()]}`;
     askdeviceinfo += 1;
     askweatherinfo += 1;
+    showimginfo += 1;
     if (askweatherinfo > 1800) {
         askweatherinfo = 0;
         ipc.send('askweatherinfo', null);
@@ -47,6 +62,10 @@ setInterval(() => {
     if (askdeviceinfo > 30) {
         askdeviceinfo = 0;
         ipc.send('askdeviceinfo', null);
+    }
+    if (showimginfo > 8) {
+        showimginfo = 0;
+        ipc.send('getpic', null);
     }
 }, 1000);
 
@@ -65,3 +84,28 @@ ipc.on('askdeviceinfo_r', (Event, Content) => {
         document.getElementById('hcho').innerHTML = Content[1];
     }
 });
+
+ipc.on('getpic_r', (e, {
+    data,
+}) => {
+    const file = new File([data], 'getpic_r.jpg', {
+        type: 'image/jpg',
+    });
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        const newUrl = this.result;
+        document.getElementById('showimg').src = newUrl;
+    };
+});
+
+
+// var reader = new FileReader();
+// reader.onload = (function (file) {
+//     return function (e) {
+//         var span = document.createElement('span');
+//         span.innerHTML = ['<br><div><img id="image_', index, '" class="thumb" src="', e.target.result, '" title="', escape(file.name), '"/><br> <input id="text_', index, '" type="text" onkeydown="handleEvent(', index, ')" /><br> <input id="button_', index, '" type="button" value="upload" onclick="upload(', index, ')"/> </div>'].join('');
+//         document.getElementById('results').insertBefore(span, null);
+//     };
+// })(img);
+// reader.readAsDataURL(img);

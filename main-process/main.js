@@ -7,8 +7,12 @@ import {
     ipcMain,
 } from 'electron';
 
+import fs from 'fs';
+
 import WeatherInfo from './WeatherInfo';
 import PantengInfo from './PantengInfo';
+import PictureShow from './PictureShow';
+
 
 const os = require('os');
 // const Parser = require('rss-parser');
@@ -101,9 +105,23 @@ function GetPantengValue() {
         console.log(error);
     }
 }
+
 ipcMain.on('askdeviceinfo', () => {
     if (os.platform() === 'linux') {
         GetPantengValue();
+    }
+});
+
+ipcMain.on('getpic', () => {
+    try {
+        const pic = new PictureShow();
+        fs.readFile(pic.GetRandomPic(), (err, data) => {
+            mainWindow.webContents.send('getpic_r', {
+                data,
+            });
+        });
+    } catch (error) {
+        console.log(error);
     }
 });
 
