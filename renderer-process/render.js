@@ -8,7 +8,7 @@ const showDay = ['星期一', '星期二', '星期三', '星期四', '星期五'
 
 let askdeviceinfo = 30;
 let askweatherinfo = 1800;
-let showimginfo = 8;
+let showimginfo = 15;
 // 屏蔽drag&drop，防止文件拖到主界面出错
 function blockdrag() {
     const holder = document.getElementById('drag-file');
@@ -17,9 +17,6 @@ function blockdrag() {
     holder.ondragend = () => false;
     holder.ondrop = (e) => {
         e.preventDefault();
-        // for (let f of e.dataTransfer.files) {
-        //     alert(f.path)
-        // }
         return false;
     };
 }
@@ -63,7 +60,7 @@ setInterval(() => {
         askdeviceinfo = 0;
         ipc.send('askdeviceinfo', null);
     }
-    if (showimginfo > 8) {
+    if (showimginfo > 15) {
         showimginfo = 0;
         ipc.send('getpic', null);
     }
@@ -93,19 +90,8 @@ ipc.on('getpic_r', (e, {
     });
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = function () {
-        const newUrl = this.result;
+    reader.onload = () => {
+        const newUrl = reader.result;
         document.getElementById('showimg').src = newUrl;
     };
 });
-
-
-// var reader = new FileReader();
-// reader.onload = (function (file) {
-//     return function (e) {
-//         var span = document.createElement('span');
-//         span.innerHTML = ['<br><div><img id="image_', index, '" class="thumb" src="', e.target.result, '" title="', escape(file.name), '"/><br> <input id="text_', index, '" type="text" onkeydown="handleEvent(', index, ')" /><br> <input id="button_', index, '" type="button" value="upload" onclick="upload(', index, ')"/> </div>'].join('');
-//         document.getElementById('results').insertBefore(span, null);
-//     };
-// })(img);
-// reader.readAsDataURL(img);

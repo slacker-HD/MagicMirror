@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>我的魔镜</title>
-        <link rel="stylesheet" href="../assets/css/div.css" />
-        <link rel="stylesheet" href="../assets/css/nativize.css" />
+<head>
+    <meta charset="utf-8">
+    <title>我的魔镜</title>
+    <link rel="stylesheet" href="../assets/css/div.css" />
+    <link rel="stylesheet" href="../assets/css/nativize.css" />
 
-    </head>
+</head>
 
-    <body id="drag-file">
+<body id="drag-file">
 
-        <div id="weatherdiv">
-            <table>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td id="location" colspan="2">合肥</td>
-                            </tr>
-                            <tr>
-                                <td id="temperature">28~21℃</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>
-                                    <img id="weatherimg"
-                                        src="http://plugin.tianqistatic.com/static/images/tianqibig/b1.png"
-                                        style="border:0;width:46px;height:46px" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="weathertext">多云</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+    <div id="weatherdiv">
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td id="location" colspan="2">合肥</td>
+                        </tr>
+                        <tr>
+                            <td id="temperature">28~21℃</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <img id="weatherimg" src="http://plugin.tianqistatic.com/static/images/tianqibig/b1.png" style="border:0;width:46px;height:46px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="weathertext">多云</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
 
-                <tr>
-                    <td id="pm25">
-                        PM2.5:40
-                    </td>
-                    <td id="hcho">
-                        甲醛：0.08
-                    </td>
-                </tr>
-                <tr>
-                    <td id="mdate" colspan="2">
-                        07/10 己亥年六月初八
-                    </td>
-                </tr>
-                <tr>
-                    <td id="mtime" colspan="2">
-                        23:29
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="picdiv">
-            <img style="max-width: 100%; height: 100%; width: auto;align:center" id="showimg" />
-        </div>
-        <div id="rssdiv"></div>
-        <script>
-            require("../renderer-process/render")
-        </script>
-    </body>
+            <tr>
+                <td id="pm25">
+                    PM2.5:40
+                </td>
+                <td id="hcho">
+                    甲醛:0.08
+                </td>
+            </tr>
+            <tr>
+                <td id="mdate" colspan="2">
+                    07/10 己亥年六月初八
+                </td>
+            </tr>
+            <tr>
+                <td id="mtime" colspan="2">
+                    23:29
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="picdiv">
+        <img style="max-width: 100%; height: 100%; width: auto;align:center" id="showimg" />
+    </div>
+    <div id="rssdiv"></div>
+    <script>
+        require("../renderer-process/render")
+    </script>
+</body>
 
 </html>

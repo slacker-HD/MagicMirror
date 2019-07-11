@@ -15,9 +15,9 @@ import PictureShow from './PictureShow';
 
 
 const os = require('os');
-// const Parser = require('rss-parser');
+const Parser = require('rss-parser');
 
-// const parser = new Parser();
+const parser = new Parser();
 let mainWindow;
 
 const createWindow = () => {
@@ -64,16 +64,16 @@ if (!gotTheLock) {
     });
 }
 
-// (async() => {
+(async() => {
 
-//     const feed = await parser.parseURL('http://www.hudi.site/atom.xml');
-//     console.log(feed.title);
+    const feed = await parser.parseURL('http://www.people.com.cn/rss/politics.xml');
+    console.log(feed.title);
 
-//     feed.items.forEach(item => {
-//         console.log(item.title + ':' + item.link);
-//     });
+    feed.items.forEach(item => {
+        console.log(item.title + ':' + item.link);
+    });
 
-// })();
+})();
 
 function GetLocalWeatherinfo() {
     let tmp = '';

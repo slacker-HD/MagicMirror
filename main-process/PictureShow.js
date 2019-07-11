@@ -20,7 +20,7 @@ export default class PictureShow {
             const info = fs.statSync(PicDir + ele);
             if (!info.isDirectory()) {
                 const filePath = PicDir + ele;
-                const fileNameReg = /.png/g;
+                const fileNameReg = /.jpg/g;
                 const shouldFormat = fileNameReg.test(filePath);
                 if (shouldFormat) {
                     this.imageList.push(filePath);
