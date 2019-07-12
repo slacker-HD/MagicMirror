@@ -8,10 +8,20 @@ const showDay = ['星期一', '星期二', '星期三', '星期四', '星期五'
 
 let askdeviceinfo = 30;
 let askweatherinfo = 1800;
-let showimginfo = 15;
-// 屏蔽drag&drop，防止文件拖到主界面出错
+let showimginfo = 60;
+let getrssinfo = 1800;
+let showrssinfo = 60;
+const ASKDEVICEINFO = 30;
+const ASKWEATHERINFO = 1800;
+const SHOWIMGINFO = 60;
+const GETRSSINFO = 180;
+const SHOWRSSINFO = 60;
+
+let rss = [];
+let startshowrss = false;
+
 function blockdrag() {
-    const holder = document.getElementById('drag-file');
+    const holder = document.body;
     holder.ondragover = () => false;
     holder.ondragleave = () => false;
     holder.ondragend = () => false;
@@ -31,12 +41,22 @@ ipc.on('action', (Content) => {
     }
 });
 
+
+function randomFrom(lower, upper) {
+    return Math.floor(Math.random() * (upper - lower + 1)) + lower;
+}
+
 setInterval(() => {
+    askdeviceinfo += 1;
+    askweatherinfo += 1;
+    showimginfo += 1;
+    getrssinfo += 1;
+    showrssinfo += 1;
+
     const date = new Date();
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
-
     if (seconds < 10) {
         seconds = `0${seconds}`;
     }
@@ -46,23 +66,33 @@ setInterval(() => {
     if (hours < 10) {
         hours = `0${hours}`;
     }
-
     document.getElementById('mtime').innerHTML = `${hours}:${minutes}:${seconds}`;
     document.getElementById('mdate').innerHTML = `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日  ${showDay[date.getDay()]}`;
-    askdeviceinfo += 1;
-    askweatherinfo += 1;
-    showimginfo += 1;
-    if (askweatherinfo > 1800) {
+
+    if (startshowrss) {
+        if (showrssinfo > SHOWRSSINFO) {
+            showrssinfo = 0;
+            const content = rss[randomFrom(0, rss.length - 1)];
+            document.getElementById('rsstitle').innerText = content.title;
+            document.getElementById('rsscontent').innerHTML = content.contentSnippet;
+        }
+    }
+
+    if (askweatherinfo > ASKWEATHERINFO) {
         askweatherinfo = 0;
         ipc.send('askweatherinfo', null);
     }
-    if (askdeviceinfo > 30) {
+    if (askdeviceinfo > ASKDEVICEINFO) {
         askdeviceinfo = 0;
         ipc.send('askdeviceinfo', null);
     }
-    if (showimginfo > 15) {
+    if (showimginfo > SHOWIMGINFO) {
         showimginfo = 0;
         ipc.send('getpic', null);
+    }
+    if (getrssinfo > GETRSSINFO) {
+        getrssinfo = 0;
+        ipc.send('getrss', null);
     }
 }, 1000);
 
@@ -94,4 +124,11 @@ ipc.on('getpic_r', (e, {
         const newUrl = reader.result;
         document.getElementById('showimg').src = newUrl;
     };
+});
+
+ipc.on('getrss_r', (e, {
+    data,
+}) => {
+    rss = data.items;
+    startshowrss = true;
 });

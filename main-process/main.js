@@ -64,17 +64,6 @@ if (!gotTheLock) {
     });
 }
 
-(async() => {
-
-    const feed = await parser.parseURL('http://www.people.com.cn/rss/politics.xml');
-    console.log(feed.title);
-
-    feed.items.forEach(item => {
-        console.log(item.title + ':' + item.link);
-    });
-
-})();
-
 function GetLocalWeatherinfo() {
     let tmp = '';
     try {
@@ -116,36 +105,27 @@ ipcMain.on('getpic', () => {
     try {
         const pic = new PictureShow();
         fs.readFile(pic.GetRandomPic(), (err, data) => {
-            mainWindow.webContents.send('getpic_r', {
-                data,
-            });
+            if (!err) {
+                mainWindow.webContents.send('getpic_r', {
+                    data,
+                });
+            }
         });
     } catch (error) {
         console.log(error);
     }
 });
 
-// function action() {
-//     if (os.platform() === 'linux') {
-//         try {
-//             GetLocalWeatherinfo();
-//             // hardWaredataHandle.GetO2Value();
-//             // hardWaredataHandle.GetPantengValue();
-//         } catch (error) {
-//             console.log(error);
-//         }
-//         try {
-//             console.log('');
-//             // netdataHandle.UpLoadData();
-//         } catch (err) {
-//             console.log(err);
-//         }
-//         mainWindow.webContents.send('action', [global.data.O2Value.value(),
-//             global.data.PMValue.value(),
-//             global.data.HCHOValue.value(),
-//             global.data.HumdityValue.value(),
-//             global.data.TemperatureValue.value(),
-//             global.data.CO2Value.value(),
-//         ]);
-//     }
-// }
+ipcMain.on('getrss', () => {
+    try {
+        parser.parseURL('http://www.people.com.cn/rss/politics.xml', (err, data) => {
+            if (!err) {
+                mainWindow.webContents.send('getrss_r', {
+                    data,
+                });
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});

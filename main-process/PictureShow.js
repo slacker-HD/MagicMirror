@@ -29,10 +29,15 @@ export default class PictureShow {
         });
     }
 
+    // eslint-disable-next-line class-methods-use-this
+    randomFrom(lower, upper) {
+        return Math.floor(Math.random() * (upper - lower + 1)) + lower;
+    }
+
     GetRandomPic() {
         this.getlists();
         if (this.imageList.length > 0) {
-            return this.imageList[Math.floor((Math.random() * this.imageList.length) + 1)];
+            return this.imageList[this.randomFrom(0, this.imageList.length - 1)];
         }
         return null;
     }

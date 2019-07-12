@@ -59,7 +59,6 @@ a {
     outline: none;
 }
 
-
 /* New window (target) + external links */
 
 a[target],
@@ -81,34 +80,10 @@ img {
     /* disable dragging */
 }
 
-
-/* 
-li {
-    list-style-type: square;
-    margin-bottom: 20px;
-    padding: 10px;
+div {
+    text-align: center;
 }
 
-li span {
-    color: black;
-    cursor: hand;
-    text-decoration: none;
-    border: 1px solid #F1F1F1;
-    margin: 10px;
-    margin-bottom: 20px;
+p {
+    font-size: 15px;
 }
-
-.liOver {
-    background-color: #dddddd;
-    border: 1px solid #000000;
-}
-
-.liout {
-    background-color: #f1f1f1;
-    border: 1px solid #f1f1f1;
-}
-
-li span.lidown {
-    background-color: #00ff00;
-    border: 1px solid #999999;
-} */
