@@ -12,7 +12,10 @@ import fs from 'fs';
 import WeatherInfo from './WeatherInfo';
 import PantengInfo from './PantengInfo';
 import PictureShow from './PictureShow';
+import VoiceAssistant from './VoiceAssistant';
 
+const voiceAssistant = new VoiceAssistant();
+voiceAssistant.Start();
 
 const os = require('os');
 const Parser = require('rss-parser');

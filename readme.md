@@ -15,5 +15,13 @@
 ## 6. 电子相册，图片位于 /home/pi/Pictures下
 
 ## 语音助手和姿势检测？？语音助手实在是不智能
-
+//assets下面有个mykey.json,格式如下，加入自己的key
+<!-- {
+    "BAIDU_APP_ID": "",
+    "BAIDU_API_KEY": "",
+    "BAIDU_SECRET_KEY": "",
+    "TULING_APIKEY": ""
+} -->
 ## 配备蓝牙（与串口冲突需解决）和手机app连接
+
+

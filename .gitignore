@@ -205,3 +205,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# 百度和图灵key文件
+mykey.json
