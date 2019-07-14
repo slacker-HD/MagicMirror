@@ -1,0 +1,4 @@
+#!/bin/bash
+gpio read $1 
+
+

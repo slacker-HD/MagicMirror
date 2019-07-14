@@ -14,14 +14,17 @@ import PantengInfo from './PantengInfo';
 import PictureShow from './PictureShow';
 import VoiceAssistant from './VoiceAssistant';
 
-const voiceAssistant = new VoiceAssistant();
-voiceAssistant.Start();
-
 const os = require('os');
 const Parser = require('rss-parser');
 
 const parser = new Parser();
 let mainWindow;
+let voiceAssistant;
+
+if (os.platform() !== 'win32') {
+    voiceAssistant = new VoiceAssistant();
+    voiceAssistant.Start();
+}
 
 const createWindow = () => {
     mainWindow = new BrowserWindow({
@@ -44,7 +47,6 @@ app.on('window-all-closed', () => {
         app.quit();
     }
 });
-
 
 app.on('activate', () => {
     if (mainWindow === null) {
