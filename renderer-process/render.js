@@ -6,13 +6,13 @@ import {
 // const shell = require('electron').shell;
 const showDay = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 
-let askdeviceinfo = 30;
-let askweatherinfo = 1800;
+let getdeviceinfo = 30;
+let getweatherinfo = 1800;
 let showimginfo = 60;
 let getrssinfo = 1800;
 let showrssinfo = 60;
-const ASKDEVICEINFO = 30;
-const ASKWEATHERINFO = 1800;
+const GETDEVICEINFO = 30;
+const GETWEATHERINFO = 1800;
 const SHOWIMGINFO = 60;
 const GETRSSINFO = 180;
 const SHOWRSSINFO = 60;
@@ -47,8 +47,8 @@ function randomFrom(lower, upper) {
 }
 
 setInterval(() => {
-    askdeviceinfo += 1;
-    askweatherinfo += 1;
+    getdeviceinfo += 1;
+    getweatherinfo += 1;
     showimginfo += 1;
     getrssinfo += 1;
     showrssinfo += 1;
@@ -78,13 +78,13 @@ setInterval(() => {
         }
     }
 
-    if (askweatherinfo > ASKWEATHERINFO) {
-        askweatherinfo = 0;
-        ipc.send('askweatherinfo', null);
+    if (getweatherinfo > GETWEATHERINFO) {
+        getweatherinfo = 0;
+        ipc.send('getweatherinfo', null);
     }
-    if (askdeviceinfo > ASKDEVICEINFO) {
-        askdeviceinfo = 0;
-        ipc.send('askdeviceinfo', null);
+    if (getdeviceinfo > GETDEVICEINFO) {
+        getdeviceinfo = 0;
+        ipc.send('getdeviceinfo', null);
     }
     if (showimginfo > SHOWIMGINFO) {
         showimginfo = 0;
@@ -96,7 +96,7 @@ setInterval(() => {
     }
 }, 1000);
 
-ipc.on('askweatherinfo_r', (Event, Content) => {
+ipc.on('getweatherinfo_r', (Event, Content) => {
     if (Content !== null) {
         document.getElementById('location').innerHTML = Content[0];
         document.getElementById('temperature').innerHTML = `${Content[1]}℃`;
@@ -105,7 +105,7 @@ ipc.on('askweatherinfo_r', (Event, Content) => {
     }
 });
 
-ipc.on('askdeviceinfo_r', (Event, Content) => {
+ipc.on('getdeviceinfo_r', (Event, Content) => {
     if (Content !== null) {
         document.getElementById('pm25').innerHTML = Content[0];
         document.getElementById('hcho').innerHTML = Content[1];

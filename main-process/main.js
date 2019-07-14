@@ -79,7 +79,7 @@ function GetLocalWeatherinfo() {
             });
             response.on('end', () => {
                 console.log(WeatherInfo.GetLocalweatherInfo(tmp));
-                mainWindow.webContents.send('askweatherinfo_r', WeatherInfo.GetLocalweatherInfo(tmp));
+                mainWindow.webContents.send('getweatherinfo_r', WeatherInfo.GetLocalweatherInfo(tmp));
             });
         });
         request.end();
@@ -88,19 +88,19 @@ function GetLocalWeatherinfo() {
     }
 }
 
-ipcMain.on('askweatherinfo', () => {
+ipcMain.on('getweatherinfo', () => {
     GetLocalWeatherinfo();
 });
 
 function GetPantengValue() {
     try {
-        mainWindow.webContents.send('askdeviceinfo_r', PantengInfo.GetPantengInfo());
+        mainWindow.webContents.send('getdeviceinfo_r', PantengInfo.GetPantengInfo());
     } catch (error) {
         console.log(error);
     }
 }
 
-ipcMain.on('askdeviceinfo', () => {
+ipcMain.on('getdeviceinfo', () => {
     if (os.platform() === 'linux') {
         GetPantengValue();
     }

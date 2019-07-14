@@ -10,8 +10,7 @@ import {
 } from 'scanf';
 
 export default class PantengInfo {
-    /* eslint-disable class-methods-use-this */
-    GetPantengInfo() {
+    static GetPantengInfo() {
         let pm25 = -1;
         let hcho = -1;
         let exef;
@@ -19,7 +18,7 @@ export default class PantengInfo {
             if (fs.existsSync('./assets/panteng')) {
                 exef = './assets/panteng';
             } else {
-                exef = `${__dirname}/dpanteng`;
+                exef = `${__dirname}/../panteng`;
             }
 
             const panteng = execFile(exef, [''], (error, stdout) => {
