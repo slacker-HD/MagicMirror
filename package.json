@@ -33,7 +33,7 @@
                 "packageManager": "npm",
                 "asar": true,
                 "quiet": true,
-                "icon": "assets/app"
+                "icon": "assets/app-icon/app"
             },
             "electronWinstallerConfig": {
                 "name": "magicmirror"
