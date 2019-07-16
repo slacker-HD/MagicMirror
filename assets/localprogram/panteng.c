@@ -2,9 +2,7 @@
 #include <wiringPi.h>
 #include <stdio.h>
 
-int _HCHO = -1, _PM = -1;
-
-void ReadSensorData(int fd)
+void ReadSensorData(int fd, int *_HCHO, int *_PM);
 {
     unsigned char str[22];
     int state = 0;
@@ -51,22 +49,23 @@ void ReadSensorData(int fd)
     }
     if (checksum == ((int)str[20]) * 256 + str[21])
     {
-        _PM = ((int)str[2]) * 256 + str[3];
-        _HCHO = (((int)str[7]) * 256 + str[8]) * 10;
+        _PM = ((int)str[10]) * 256 + str[11];
+        _HCHO = (((int)str[26]) * 256 + str[27]) * 10;
     }
 }
 
 int main(void)
 {
     int fd;
+    int hcho = -1, pm = -1;
     wiringPiSetup();
     if ((fd = serialOpen("/dev/ttyAMA0", 9600)) < 0)
     {
         printf("error\n");
         return -1;
     }
-    ReadSensorData(fd);
-    printf("HCHO=%d,PM=%d", _HCHO, _PM);
+    ReadSensorData(fd, &hcho, &pm);
+    printf("HCHO=%d,PM=%d", hcho, pm);
     serialClose(fd);
     return 0;
 }
