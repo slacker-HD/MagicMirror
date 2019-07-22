@@ -1,16 +1,28 @@
 'use strict';
 
-import path from 'path';
-import fs from 'fs';
-import querystring from 'querystring';
-import http from 'http';
-import {
-    tmpdir,
-} from 'os';
+// import path from 'path';
+// import fs from 'fs';
+// import querystring from 'querystring';
+// import http from 'http';
+// import {
+//     tmpdir,
+// } from 'os';
 
-import {
-    execFile,
-} from 'child_process';
+// import {
+//     execFile,
+// } from 'child_process';
+
+const http = require('https');
+const path = require('path');
+const querystring = require('querystring');
+
+const fs = require('fs');
+const os = require('os');
+
+const tmpdir = os.tmpdir();
+const {
+    execFile
+} = require('child_process');
 
 const HotwordDetector = require('node-hotworddetector');
 const record = require('node-record-lpcm16');

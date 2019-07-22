@@ -1,13 +1,19 @@
 'use strict';
 
-import {
-    execFile,
-} from 'child_process';
-import fs from 'fs';
+// import {
+//     execFile,
+// } from 'child_process';
+// import fs from 'fs';
 
-import {
-    sscanf,
-} from 'scanf';
+// import {
+//     sscanf,
+// } from 'scanf';
+const {
+    execFile
+} = require('child_process');
+const sscanf = require('scanf').sscanf;
+
+const fs = require('fs');
 
 export default class PantengInfo {
     static GetPantengInfo() {

@@ -1,30 +1,50 @@
 'use strict';
 
-import {
-    app,
-    BrowserWindow,
-    net,
-    ipcMain,
-} from 'electron';
+// import {
+//     app,
+//     BrowserWindow,
+//     net,
+//     ipcMain,
+// } from 'electron';
 
-import fs from 'fs';
+// import fs from 'fs';
 
-import WeatherInfo from './WeatherInfo';
-import PantengInfo from './PantengInfo';
-import PictureShow from './PictureShow';
-import VoiceAssistant from './VoiceAssistant';
+// import WeatherInfo from './WeatherInfo';
+// import PantengInfo from './PantengInfo';
+// import PictureShow from './PictureShow';
+// import VoiceAssistant from './VoiceAssistant';
 
+const electron = require('electron');
+const fs = require('fs');
 const os = require('os');
 const Parser = require('rss-parser');
+
+const app = require('electron').app;
+const BrowserWindow = require('electron').BrowserWindow;
+const net = require('electron').net;
+const ipcMain = require('electron').app;
+
+const {
+    WeatherInfo,
+} = require('./WeatherInfo');
+const {
+    PantengInfo,
+} = require('./PantengInfo');
+const {
+    PictureShow,
+} = require('./PictureShow');
+const {
+    VoiceAssistant,
+} = require('./VoiceAssistant');
 
 const parser = new Parser();
 let mainWindow;
 let voiceAssistant;
 
-if (os.platform() !== 'win32') {
-    voiceAssistant = new VoiceAssistant();
-    voiceAssistant.Start();
-}
+// if (os.platform() !== 'win32') {
+//     voiceAssistant = new VoiceAssistant();
+//     voiceAssistant.Start();
+// }
 
 const createWindow = () => {
     mainWindow = new BrowserWindow({

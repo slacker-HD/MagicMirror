@@ -1,12 +1,18 @@
 'use strict';
 
-import {
-    homedir,
-} from 'os';
+// import {
+//     homedir,
+// } from 'os';
 
-import fs from 'fs';
+// import fs from 'fs';
 
-const PicDir = `${homedir()}/Pictures/`;
+const fs = require('fs');
+const os = require('os');
+
+const homedir = os.homedir();
+
+const PicDir = `${homedir}/Pictures/`;
+// const PicDir = `${homedir()}/Pictures/`;
 
 export default class PictureShow {
     constructor() {

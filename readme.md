@@ -23,3 +23,7 @@ assets下面有个mykey.json,格式如下，加入自己的key
     "TULING_APIKEY": ""}
 
 ## 配备蓝牙（与串口冲突需解决）和手机app连接  不做了，与串口冲突，不想加硬件了
+
+## snowboy的依赖
+
+apt install libblas-dev libgslcblas0 swig3.0 sox libatlas-base-dev libasound2-dev
